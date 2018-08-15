@@ -7,59 +7,37 @@ import com.google.test.support.TextHolder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
 @Listeners({ScreenShotReporter.class, ReportEnhancer.class})
 public class BaseTest {
 
-    protected TestProperties testProperties;
-    protected TextHolder textHolder;
-    private WebDriver driver;
+    protected static ThreadLocal<BaseStep> stepThreadLocal = new ThreadLocal<>();
 
-    public BaseTest() {
-        testProperties = TestProperties.getInstance();
-        textHolder = TextHolder.getInstance();
+
+
+    @BeforeMethod
+    public void setUp() {
+        stepThreadLocal.set(new BaseStep());
     }
 
-    public BaseTest openBrowser() {
-        driver = createWebDriver();
-        return this;
-    }
-
-
-    private WebDriver createWebDriver() {
-        String browserName = testProperties.getBrowser();
-        WebDriver driver = null;
-        switch (browserName) {
-            case "chrome":
-                driver = createChromeDriver();
-                break;
-            case "firefox":
-                driver = createFireFoxDriver();
-                break;
-
-        }
-        return driver;
-    }
-
-
-    private WebDriver createChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", testProperties.getChromeDriverPath());
-        return new ChromeDriver();
-    }
-
-    private WebDriver createFireFoxDriver() {
-        System.setProperty("webdriver.gecko.driver", testProperties.getGekhoDriverPath());
-        return new FirefoxDriver();
-    }
-
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod
     public void tearDown() {
-        this.driver.quit();
+        getTestDriver().getDriver().quit();
     }
 
-    public WebDriver getDriver() {
-        return driver;
+    @AfterClass
+    public void terminate() {
+        //Remove the ThreadLocalMap element
+        stepThreadLocal.remove();
     }
+
+
+    public BaseStep getTestDriver() {
+        return stepThreadLocal.get();
+    }
+
 }

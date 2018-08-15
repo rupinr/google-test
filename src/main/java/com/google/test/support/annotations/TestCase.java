@@ -13,5 +13,5 @@ public @interface TestCase {
 
     Priority priority() ;
 
-    String desciption() default "";
+    String description() default "";
 }

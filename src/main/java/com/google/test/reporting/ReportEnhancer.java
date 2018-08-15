@@ -1,6 +1,7 @@
 package com.google.test.reporting;
 
 import com.google.test.support.annotations.TestCase;
+import com.google.test.test.BaseTest;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
@@ -15,7 +16,7 @@ public class ReportEnhancer implements IInvokedMethodListener {
                 .getAnnotation(TestCase.class);
         if (testCase != null) {
             Reporter.log("<h2> Test ID :"+testCase.id()+"</h2>");
-            Reporter.log("<h2> Description: "+testCase.desciption()+"</h2>");
+            Reporter.log("<h2> Description: "+testCase.description()+"</h2>");
             Reporter.log("<h2> Priority: "+testCase.priority().toString()+"</h2>");
         }
     }

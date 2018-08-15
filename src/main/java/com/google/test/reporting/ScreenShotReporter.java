@@ -76,7 +76,7 @@ public class ScreenShotReporter implements ITestListener {
 
     private WebDriver extractWebDriver(ITestResult result) {
         BaseTest baseTest = (BaseTest) (result.getInstance());
-        return baseTest.getDriver();
+        return baseTest.getTestDriver().getDriver();
     }
 
 }

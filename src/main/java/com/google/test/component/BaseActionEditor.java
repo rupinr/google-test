@@ -3,6 +3,7 @@ package com.google.test.component;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class BaseActionEditor {
@@ -20,8 +21,20 @@ public class BaseActionEditor {
         element.sendKeys(text);
     }
 
+
+    public void moveToElementAndClickByName(String name){
+        Actions actions= new Actions(driver);
+        actions.moveToElement(driver.findElement(By.name(name)))
+                .click()
+                .build()
+                .perform();
+    }
     public void clickOnElementById(String id) {
         driver.findElement(By.id(id)).click();
+    }
+
+    public void clickOnElementByName(String name) {
+        driver.findElement(By.name(name)).click();
     }
 
     public void clickOnElementByXpath(String xpath) {
@@ -36,6 +49,10 @@ public class BaseActionEditor {
     public void selectComboBoxByIdWithText(String id, String text) {
         Select select = new Select(this.driver.findElement(By.id(id)));
         select.selectByVisibleText(text);
+    }
+
+    public String getElementTextByXpath(String xpath){
+        return this.driver.findElement(By.xpath(xpath)).getText();
     }
 
 
