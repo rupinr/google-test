@@ -3,6 +3,7 @@ package com.google.test.test;
 import com.google.test.reporting.ReportEnhancer;
 import com.google.test.reporting.ScreenShotReporter;
 import com.google.test.support.TestProperties;
+import com.google.test.support.TextHolder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,10 +14,12 @@ import org.testng.annotations.Listeners;
 public class BaseTest {
 
     protected TestProperties testProperties;
+    protected TextHolder textHolder;
     private WebDriver driver;
 
     public BaseTest() {
         testProperties = TestProperties.getInstance();
+        textHolder = TextHolder.getInstance();
     }
 
     public BaseTest openBrowser() {

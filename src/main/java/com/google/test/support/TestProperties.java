@@ -52,5 +52,10 @@ public class TestProperties {
         return this.properties.getProperty("screenshotDirectory");
     }
 
+    public String getLocale() {
+        return this.properties.getProperty("locale");
+    }
+
+
 
 }
