@@ -2,7 +2,6 @@ package com.google.test.test;
 
 import com.google.test.pages.GoogleHomePage;
 import com.google.test.support.TestProperties;
-import com.google.test.support.TextHolder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,13 +9,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BaseStep {
 
     private WebDriver driver;
-    protected TestProperties testProperties;
-    protected TextHolder textHolder;
 
 
     public BaseStep() {
-        testProperties = TestProperties.getInstance();
-        textHolder = TextHolder.getInstance();
         this.driver = this.createWebDriver();
 
     }
@@ -31,7 +26,7 @@ public class BaseStep {
     }
 
     private WebDriver createWebDriver() {
-        String browserName = testProperties.getBrowser();
+        String browserName = BaseTest.testProperties.getBrowser();
         WebDriver driver = null;
         switch (browserName) {
             case "chrome":
@@ -47,12 +42,12 @@ public class BaseStep {
 
 
     private WebDriver createChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", testProperties.getChromeDriverPath());
+        System.setProperty("webdriver.chrome.driver", BaseTest.testProperties.getChromeDriverPath());
         return new ChromeDriver();
     }
 
     private WebDriver createFireFoxDriver() {
-        System.setProperty("webdriver.gecko.driver", testProperties.getGekhoDriverPath());
+        System.setProperty("webdriver.gecko.driver", BaseTest.testProperties.getGekhoDriverPath());
         return new FirefoxDriver();
     }
 

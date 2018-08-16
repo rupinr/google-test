@@ -55,5 +55,9 @@ public class BaseActionEditor {
         return this.driver.findElement(By.xpath(xpath)).getText();
     }
 
+    public String getInputFieldTextById(String id){
+        return this.driver.findElement(By.id(id)).getAttribute("value");
+    }
+
 
 }
