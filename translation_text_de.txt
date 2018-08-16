@@ -1,1 +1,3 @@
 search_title=Google-Suche
+did_you_mean=Meintest du:
+google_doodles=Google Doodles

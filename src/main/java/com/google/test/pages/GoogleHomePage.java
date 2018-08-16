@@ -41,6 +41,16 @@ public class GoogleHomePage extends BasePage {
         return new SearchResultPage(driver);
     }
 
+    public GoogleHomePage clickSearchButtonWithoutEnteringText() {
+        this.actionEditor.clickOnElementByName(SEARCH_BUTTON_NAME);
+        return this;
+    }
+
+    public GoogleDoodlesPage clickIAmFeelingLuckyButtonWithoutEnteringAnyText() {
+        this.actionEditor.clickOnElementByName(I_AM_FEELING_LUCKY_NAME);
+        return new GoogleDoodlesPage(driver);
+    }
+
     public GoogleDoodlesPage openGoogleDoodlesPage() {
         this.actionEditor.clickOnElementByName(I_AM_FEELING_LUCKY_NAME);
         return new GoogleDoodlesPage(driver);

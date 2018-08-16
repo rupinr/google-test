@@ -1,1 +1,3 @@
 search_title=Google Search
+did_you_mean=Did you mean:
+google_doodles=Google Doodles
