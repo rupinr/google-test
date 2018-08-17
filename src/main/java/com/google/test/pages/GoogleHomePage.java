@@ -57,6 +57,7 @@ public class GoogleHomePage extends BasePage {
     }
 
     public GoogleAppsMenu openGoogleAppsHint() {
+
         this.actionEditor.clickOnElementById(GOOGLE_APPS_ID);
         return new GoogleAppsMenu(driver);
     }

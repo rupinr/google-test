@@ -1,8 +1,8 @@
 package com.google.test;
 
+import com.google.test.pages.GoogleAppsMenu;
 import com.google.test.pages.GoogleDoodlesPage;
 import com.google.test.pages.GoogleHomePage;
-import com.google.test.pages.SearchResultListBox;
 import com.google.test.pages.SearchResultPage;
 import com.google.test.support.annotations.TestCase;
 import com.google.test.test.BaseTest;
@@ -82,10 +82,51 @@ public class HomePageTest extends BaseTest {
                 .editSearchTextToSelectFromSearchResult(searchText)
                 .getAllSearchResult();
 
-        assertEquals(searchSuggestions.size(),10);
+        assertEquals(searchSuggestions.size(), 10);
         searchSuggestions
                 .forEach(result -> assertTrue(result.contains(searchText)));
 
+    }
+
+    @Test
+    @TestCase(id = "TC005", priority = MEDIUM, description = "Verify the title of Google apps")
+    public void verifyGoogleAppsTitle() {
+        GoogleAppsMenu googleAppsMenu = this.getTestDriver()
+                .openGoogleHomePage()
+                .openGoogleAppsHint()
+                .clickOnMoreButton();
+
+        assertEquals(googleAppsMenu.getAccountAppText(),textHolder.getText("account"));
+        assertEquals(googleAppsMenu.getSearchAppText(),textHolder.getText("search"));
+        assertEquals(googleAppsMenu.getMapsAppText(),textHolder.getText("maps"));
+
+
+        assertEquals(googleAppsMenu.getYoutubeAppText(),textHolder.getText("youtube"));
+        assertEquals(googleAppsMenu.getPlayAppText(),textHolder.getText("play"));
+        assertEquals(googleAppsMenu.getGMailAppText(),textHolder.getText("gmail"));
+
+
+        assertEquals(googleAppsMenu.getContactsAppText(),textHolder.getText("contacts"));
+        assertEquals(googleAppsMenu.getDriveAppText(),textHolder.getText("drive"));
+        assertEquals(googleAppsMenu.getCalendarAppText(),textHolder.getText("calendar"));
+
+
+        assertEquals(googleAppsMenu.getTranslateAppText(),textHolder.getText("translate"));
+        assertEquals(googleAppsMenu.getPhotosAppText(),textHolder.getText("photos"));
+
+
+        assertEquals(googleAppsMenu.getDocsAppText(),textHolder.getText("docs"));
+        assertEquals(googleAppsMenu.getBooksAppText(),textHolder.getText("books"));
+        assertEquals(googleAppsMenu.getBLoggerAppText(),textHolder.getText("blogger"));
+
+        assertEquals(googleAppsMenu.getHangoutAppText(),textHolder.getText("hangouts"));
+        assertEquals(googleAppsMenu.getKeepAppText(),textHolder.getText("keep"));
+        assertEquals(googleAppsMenu.getEarthAppText(),textHolder.getText("earth"));
+
+
+
+        //Login
+        //Voice
     }
 
 }
