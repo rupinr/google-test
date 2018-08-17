@@ -19,3 +19,19 @@ blogger=Blogger
 hangouts=Hangouts
 keep=Notizen
 earth=Earth
+advertising=Werbeprogramme
+business=Unternehmen
+about=Über Google
+privacy=Nutzungsbedingungen
+terms=Nutzungsbedingungen
+settings=Einstellungen
+
+search_settings=Sucheinstellungen
+advanced_search=Erweiterte Suche
+history=Protokoll
+search_help=Hilfe zur Suche
+send_feedback=Feedback geben
+
+image_title=Google Bilder
+login_title=Anmelden – Google Konten
+

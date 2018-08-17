@@ -16,6 +16,7 @@ public class GoogleHomePage extends BasePage {
     private static final String GOOGLE_LOGIN_ID = "gb_70";
     private static final String COUNTRY_NAME_XPATH = "//*[@class='Q8LRLc']";
     private static final String FOOTER_LINKS_COMMON_XPATH = "(//*[@class='Fx4vi'])[{I}]";
+    private static final String GOOGLE_IMAGE_XPATH="//*[@data-pid=2]";
 
 
     private BaseActionEditor actionEditor;
@@ -103,5 +104,15 @@ public class GoogleHomePage extends BasePage {
 
     private void enterSearchText(String searchText) {
         this.actionEditor.editTextFieldById(SEARCH_INPUT_ID, searchText);
+    }
+
+    public GoogleSettingsMenu openGoogleSettings(){
+        this.actionEditor.clickOnElementByXpath(FOOTER_LINKS_COMMON_XPATH.replace(I,"3"));
+        return new GoogleSettingsMenu(driver);
+    }
+
+    public GoogleImageSearchPage openGoogleImageSearchPage(){
+        this.actionEditor.clickOnElementByXpath(GOOGLE_IMAGE_XPATH);
+        return new GoogleImageSearchPage(driver);
     }
 }
