@@ -33,7 +33,7 @@ public class HomePageTest extends BaseTest {
     @Test
     @TestCase(id = "TC002", priority = HIGH, description = "Verify that user is suggested with correct" +
             "spelling if there is an incorrect spelling in the search string")
-    public void verifyIncorrectSpellingSerch() {
+    public void verifyIncorrectSpellingSearch() {
         String searchText = "google i gooood";
         SearchResultPage searchResultPage = this.getTestDriver()
                 .openGoogleHomePage()

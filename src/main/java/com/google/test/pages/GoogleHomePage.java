@@ -1,6 +1,7 @@
 package com.google.test.pages;
 
 import com.google.test.component.BaseActionEditor;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import static com.google.test.locators.Replacements.I;
@@ -38,7 +39,8 @@ public class GoogleHomePage extends BasePage {
     }
 
     public SearchResultPage openGoogleSearchResultPage() {
-        this.actionEditor.moveToElementAndClickByName(SEARCH_BUTTON_NAME);
+        JavascriptExecutor javascriptExecutor=(JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("document.getElementsByName('btnK')[0].click()");
         return new SearchResultPage(driver);
     }
 
